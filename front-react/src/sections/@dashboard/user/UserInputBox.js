@@ -174,9 +174,11 @@ export default function UserInputBox({ isOpenRegister, onOpenRegister, onCloseRe
       }
     })
     .then(res =>
-      alertPopup('사용자 등록확인')
+      alertPopup('관리자 등록확인'),
+      onCloseRegister(),
+
     )
-    .catch(err => console.log(err))
+    .catch(err => alertPopup(err))
 
   };
 
