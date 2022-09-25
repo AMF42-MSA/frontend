@@ -52,7 +52,7 @@ const TABLE_HEAD = [
   { id: 'startAuctionDate', label: '경매시작일자', alignRight: false },
   { id: 'endAuctionDate', label: '경매종료일자', alignRight: false },
   { id: 'maxEnrollment', label: '수강인원(최소/최대)', alignRight: false },
-  { id: 'lectCost', label: '강의료', alignRight: false },
+  // { id: 'lectCost', label: '강의료', alignRight: false },
   { id: 'auctionStatus', label: '경매상태', alignRight: false },
   { id: 'lectureBidCnt', label: '입찰수', alignRight: false },
   { id: 'bidMinPrice', label: '최저입찰가', alignRight: false },

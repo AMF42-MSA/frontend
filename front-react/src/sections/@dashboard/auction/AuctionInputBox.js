@@ -217,7 +217,6 @@ export default function AuctionInputBox({ isOpenRegister, onOpenRegister, onClos
   const auctionRegister = () => {
 
 
-    alert(user.memberId);
 
     http({
       method: 'put',
