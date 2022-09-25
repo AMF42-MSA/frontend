@@ -132,10 +132,10 @@ function descendingComparator(a, b, orderBy) {
 }
 
 const TABLE_HEAD = [
-  { id: 'bidRegUserId', label: '회원ID', alignRight: false },
-  { id: 'bidRegUserId', label: '회원 이메일', alignRight: false },
 
   { id: 'bidRegUserName', label: '회원명', alignRight: false },
+  { id: 'bidRegUserId', label: '회원 이메일', alignRight: false },
+
   { id: 'price', label: '입찰가', alignRight: false },
   { id: 'status', label: '상태', alignRight: false },
 
@@ -424,7 +424,7 @@ export default function AuctionBidSuccessBox({ isOpenBidSuccessRegister, onOpenB
                       </TableCell>
 
                       {/* <TableCell align="left">{lectureBidId}</TableCell> */}
-                      <TableCell align="left">{bidRegUserId} </TableCell>
+                      {/* <TableCell align="left">{bidRegUserId} </TableCell> */}
                       <TableCell align="left">{bidRegUserName}</TableCell>
                       <TableCell align="left">{bidRegUserEmail}</TableCell>
                       <TableCell align="left">{price}</TableCell>

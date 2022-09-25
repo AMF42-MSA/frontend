@@ -504,7 +504,7 @@ export default function User() {
                         <TableCell align="left">{dateToString(startAuctionDate)}</TableCell>
                         <TableCell align="left">{moment(endAuctionDate).format('YYYY-MM-DD')}</TableCell>
                         <TableCell align="left">{minEnrollment} / {maxEnrollment}</TableCell>
-                        <TableCell align="right">{lectCost}</TableCell>
+                        {/* <TableCell align="right">{lectCost}</TableCell> */}
                         {/* <TableCell align="left">{auctionStatus}</TableCell> */}
 
                          <TableCell align="left">

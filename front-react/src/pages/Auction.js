@@ -64,7 +64,9 @@ const TABLE_HEAD = [
   // { id: 'lectCost', label: '강의료', alignRight: false },
   { id: 'auctionStatus', label: '경매상태', alignRight: false },
   { id: 'auctionRegUserName', label: '등록자', alignRight: false },
-  { id: 'auctionRegUserId', label: '등록자ID', alignRight: false },
+  // { id: 'auctionRegUserId', label: '등록자ID', alignRight: false },
+  { id: 'auctionRegUserEmail', label: '메일주소', alignRight: false },
+
 
 
   // { id: 'bidCnt', label: '입찰수', alignRight: false },
@@ -503,7 +505,7 @@ export default function Auction() {
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                     // const { id, title, lectStatus,  startAuctionDate, endAuctionDate} = row;
 
-                    const { lectId, categoryName, title, startAuctionDate,  endAuctionDate, maxEnrollment, minEnrollment, lectCost, auctionStatus, auctionRegUserName, auctionRegUserId} = row;
+                    const { lectId, categoryName, title, startAuctionDate,  endAuctionDate, maxEnrollment, minEnrollment, lectCost, auctionStatus, auctionRegUserName, auctionRegUserEmail} = row;
 
 
                     const isItemSelected = selected.indexOf(lectId) !== -1;
@@ -530,7 +532,7 @@ export default function Auction() {
                         <TableCell align="left">{dateToString(startAuctionDate)}</TableCell>
                         <TableCell align="left">{dateToString(endAuctionDate)}</TableCell>
                         <TableCell align="left">{minEnrollment} / {maxEnrollment}</TableCell>
-                        <TableCell align="left">{lectCost}</TableCell>
+                        {/* <TableCell align="left">{lectCost}</TableCell> */}
                         {/* <TableCell align="left">{auctionStatus}</TableCell> */}
 
                          <TableCell align="left">
@@ -539,7 +541,8 @@ export default function Auction() {
                           </Label>
                         </TableCell>
                         <TableCell align="left">{auctionRegUserName}</TableCell>
-                        <TableCell align="left">{auctionRegUserId}</TableCell>
+                        {/* <TableCell align="left">{auctionRegUserId}</TableCell> */}
+                        <TableCell align="left">{auctionRegUserEmail}</TableCell>
 
                         {/* <TableCell align="left">{bidCnt}</TableCell>
                         <TableCell align="left">{lowPrice}</TableCell> */}
