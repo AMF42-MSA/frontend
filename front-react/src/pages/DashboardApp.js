@@ -142,7 +142,7 @@ const getMemberTotalCount = async () => {
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="오늘의 강좌수" total={8} color="error" icon={'ant-design:bug-filled'} />
+            <AppWidgetSummary title="오늘의 강좌수" total={lectureCount} color="error" icon={'ant-design:bug-filled'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
