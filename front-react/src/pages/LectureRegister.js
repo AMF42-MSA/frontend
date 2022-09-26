@@ -47,19 +47,16 @@ import axiosApi from '../sections/axiosApi';
 const httpLectRegist = axiosApi("lectureRegisters");
 
 const TABLE_HEAD = [
-  { id: 'lectId',                 label: '강의ID', alignCenter: true },
-  { id: 'lectName',               label: '강의명', alignCenter: true },
-  // { id: 'lectContent',            label: '강의내용', alignCenter: true },
-  { id: 'lectMINUser',            label: '최소인원', alignCenter: true },
-  { id: 'lectMAXUser',            label: '최대인원', alignCenter: true },
-  { id: 'lectFee',                label: '강의료', alignCenter: true },
-  { id: 'startLectRegistDate',    label: '강의시작', alignCenter: true },
-  { id: 'endLectRegistDate',      label: '신청마감', alignCenter: true },
-  { id: 'lectRegistStatus',       label: '강의상태', alignCenter: true   },
-  { id: 'lectRegistCnt',          label: '신청자수', alignCenter: true   },
+  { id: 'categoryName',                 label: '강의분류', alignCenter: true },
+  { id: 'title',                      label: '강의명', alignCenter: true },
+  { id: 'maxEnrollment',              label: '수강인원(최소/최대)', alignCenter: true },
+  { id: 'lectCost',      label: '강의료', alignCenter: true },
+  { id: 'lectureStatus',       label: '강의상태', alignCenter: true   },
+  { id: 'startLectureDt',          label: '강의시작일자', alignCenter: true   },
 ];
-
 // ----------------------------------------------------------------------
+
+
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -214,64 +211,7 @@ export default function User() {
 
 
 
-  // const auctions = () => {
 
-  //   const response = axios.get("http://localhost:8083/auctions");
-  //   console.log(response.data);
-
-  //  }
-
-
-  // const headers = {};
-  // const response = axios.get('http://localhost:8083/auctions', headers);
-  // response = axios.get("http://localhost:8083/auctions");
-  // console.log(response.data);
-  // console.log(181818181818)
-
-
-  // const response = await axios.get(this.BASE_URL + '/api/hello', data);
-  // const myMethod = () => {
-  //   axios.put(`http://localhost:8083/lectureRegisters/1/cancel`,
-  //   {
-  //     withCredentials: true // 쿠키 cors 통신 설정
-  //   }).then(response => {
-  //     console.log(response);
-  //   })
-
-  // }
-
-
-
-
-  // const auctionCancel = () => {
-
-  //   axios({
-  //     method: 'put',
-  //     url: 'http://localhost:8083/lectureRegisters/lectureRegistCancel',
-  //     data: {
-  //       lectIds: selected, // selected에 lectId를 담고 있다.
-  //       // id: '1'
-  //     }
-  //   })
-  //   .then(res => alertPopup('강의신청취소확인'))
-  //   .catch(err => console.log(err))
-  // }
-
-
-
-  // const searchAuctionList = () => {
-  //   axios.get('http://localhost:8083/lectureRegisters/searchLectureList')
-  //   .then(res => setInfo(res.data))
-  //   .catch(err => console.log(err));
-  // }
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:8083/lectureRegisters/searchLectureList')
-  //   .then(res => setInfo(res.data))
-  //   .catch(err => console.log(err));
-  // }, [])
-
- 
   const searchAuctionList = async () => {
     httpLectRegist.get(`/searchLectureList`,{})
     .then(res => setInfo(res.data))
@@ -354,10 +294,9 @@ export default function User() {
                 />
                 <TableBody>
                   {info.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    // const { id, lectName, lectStatus,  startAuctionDate, endAuctionDate} = row;
 
-                    const { Id, lectId, lectContent, lectName, lectMINUser,  lectMAXUser, lectFee, startLectRegistDate, endLectRegistDate, lectRegistStatus} = row;
-
+                    const { lectId, categoryName, maxEnrollment,minEnrollment,  lectCost, Title, lectureStatus,
+                      startLectureDt} = row;
 
                     const isItemSelected = selected.indexOf(lectId) !== -1;
 
@@ -373,16 +312,12 @@ export default function User() {
                         <TableCell padding="checkbox">
                           <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, lectId)} />
                         </TableCell>
-                        <TableCell align="center">{lectId}</TableCell>
-                        <TableCell align="center">{lectName}</TableCell>
-                        {/* <TableCell align="center">{lectContent}</TableCell> */}
-                        <TableCell align="center">{lectMINUser} 명</TableCell>
-                        <TableCell align="center">{lectMAXUser} 명</TableCell>
-                        <TableCell align="center">{lectFee} 원</TableCell>
-                        <TableCell align="center">{dateToString(startLectRegistDate)}</TableCell>
-                        <TableCell align="center">{dateToString(endLectRegistDate)}</TableCell>
-                        <TableCell align="center">{lectRegistStatus}</TableCell>
-
+                        <TableCell align="center">{categoryName}</TableCell>
+                        <TableCell align="center">{Title}</TableCell>
+                        <TableCell align="left">{minEnrollment} / {maxEnrollment}</TableCell>
+                        <TableCell align="center">{lectCost}</TableCell>
+                        <TableCell align="center">{lectureStatus}</TableCell>
+                        <TableCell align="center">{startLectureDt}</TableCell>
                       </TableRow>
                     );
                   })}
