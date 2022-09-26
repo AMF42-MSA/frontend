@@ -44,11 +44,10 @@ import USERLIST from '../_mock/user';
 
 import axiosApi from '../sections/axiosApi';
 // ----------------------------------------------------------------------
-//const httpLectRegist = axiosApi("lectureRegisters");
 const http = axiosApi("lectureRegisters");
 
 const TABLE_HEAD = [
-  { id: 'categoryName',               label: '강의분류', alignCenter: true },
+  { id: 'categoryName',                 label: '강의분류', alignCenter: true },
   { id: 'title',                      label: '강의명', alignCenter: true },
   { id: 'maxEnrollment',              label: '수강인원(최소/최대)', alignCenter: true },
   { id: 'lectCost',                   label: '강의료', alignCenter: true },
@@ -219,12 +218,15 @@ export default function User() {
   //   .catch(err => console.log(err))
   // }
 
+  const searchLectureList = async () => {
+    http({
+      method: 'get',
+      url: '/searchLectureList',
+    })
+    .then(res => setInfo(res.data))
+    .catch(err => console.log(err));
+  }
 
-  // useEffect(() => {
-  //   httpLectRegist.get('/searchLectureList')
-  //   .then(res => setInfo(res.data))
-  //   .catch(err => console.log(err));
-  // }, [])
 
   useEffect(() => {
     http({
@@ -236,6 +238,8 @@ export default function User() {
       res => console.log(res.data)
     )
     .catch(err => console.log(err));
+  }, [])
+
 
   const isUserNotFound = filteredUsers.length === 0;
 
@@ -299,7 +303,8 @@ export default function User() {
                 <TableBody>
                   {info.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
 
-                    const { lectId, categoryName, maxEnrollment, minEnrollment, lectCost, title, lectureStatus,startLectureDt } = row;
+                    const { lectId, categoryName, maxEnrollment,minEnrollment,  lectCost, Title, lectureStatus,
+                      startLectureDt} = row;
 
                     const isItemSelected = selected.indexOf(lectId) !== -1;
 
@@ -316,7 +321,7 @@ export default function User() {
                           <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, lectId)} />
                         </TableCell>
                         <TableCell align="center">{categoryName}</TableCell>
-                        <TableCell align="center">{title}</TableCell>
+                        <TableCell align="center">{Title}</TableCell>
                         <TableCell align="left">{minEnrollment} / {maxEnrollment}</TableCell>
                         <TableCell align="center">{lectCost}</TableCell>
                         <TableCell align="center">{lectureStatus}</TableCell>
