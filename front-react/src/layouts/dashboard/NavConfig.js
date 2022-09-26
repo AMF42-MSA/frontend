@@ -17,11 +17,6 @@ const navConfig = [
     icon: getIcon('eva:shopping-bag-fill'),
   },
   {
-    title: '강의신청',
-    path: '/dashboard/products',
-    icon: getIcon('eva:shopping-bag-fill'),
-  },
-  {
     title: '수강신청',
     path: '/dashboard/lectureregister',
     icon: getIcon('eva:shopping-bag-fill'),
@@ -46,21 +41,21 @@ const navConfig = [
     path: '/dashboard/interestcategory',
     icon: getIcon('bi:bookmark-star-fill'),
   },
-  {
-    title: '강의결제',
-    path: '/dashboard/blog',
-    icon: getIcon('eva:file-text-fill'),
-  },
-  {
-    title: '강의평가',
-    path: '/dashboard/blog',
-    icon: getIcon('eva:file-text-fill'),
-  },
-  {
-    title: '강의정산',
-    path: '/dashboard/blog',
-    icon: getIcon('eva:file-text-fill'),
-  },
+  // {
+  //   title: '강의결제(준비중)',
+  //   path: '/dashboard/app',
+  //   icon: getIcon('eva:file-text-fill'),
+  // },
+  // {
+  //   title: '강의평가(준비중)',
+  //   path: '/dashboard/app',
+  //   icon: getIcon('eva:file-text-fill'),
+  // },
+  // {
+  //   title: '강의정산(준비중)',
+  //   path: '/dashboard/app',
+  //   icon: getIcon('eva:file-text-fill'),
+  // },
   {
     title: '로그인',
     path: '/login',
