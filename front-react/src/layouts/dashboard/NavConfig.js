@@ -41,21 +41,6 @@ const navConfig = [
     path: '/dashboard/interestcategory',
     icon: getIcon('bi:bookmark-star-fill'),
   },
-  // {
-  //   title: '강의결제(준비중)',
-  //   path: '/dashboard/app',
-  //   icon: getIcon('eva:file-text-fill'),
-  // },
-  // {
-  //   title: '강의평가(준비중)',
-  //   path: '/dashboard/app',
-  //   icon: getIcon('eva:file-text-fill'),
-  // },
-  // {
-  //   title: '강의정산(준비중)',
-  //   path: '/dashboard/app',
-  //   icon: getIcon('eva:file-text-fill'),
-  // },
   {
     title: '로그인',
     path: '/login',
