@@ -44,19 +44,19 @@ import USERLIST from '../_mock/user';
 
 import axiosApi from '../sections/axiosApi';
 // ----------------------------------------------------------------------
-const http = axiosApi("lectureRegisters");
+
 
 const TABLE_HEAD = [
-  { id: 'categoryName',                 label: '강의분류', alignCenter: true },
-  { id: 'title',                      label: '강의명', alignCenter: true },
-  { id: 'maxEnrollment',              label: '수강인원(최소/최대)', alignCenter: true },
-  { id: 'lectCost',                   label: '강의료', alignCenter: true },
-  { id: 'lectureStatus',              label: '강의상태', alignCenter: true   },
-  { id: 'startLectureDt',             label: '강의시작일자', alignCenter: true   },
+  { id: 'categoryName',               label: '강의분류', alignCenter: false },
+  { id: 'title',                      label: '강의명', alignCenter: false },
+  { id: 'maxEnrollment',              label: '수강인원(최소/최대)', alignCenter: false },
+  { id: 'lectCost',                   label: '강의료', alignCenter: false },
+  { id: 'lectureStatus',              label: '강의상태', alignCenter: false   },
+  { id: 'startLectureDt',             label: '강의시작일자', alignCenter: false   },
 ];
 // ----------------------------------------------------------------------
 
-
+const http = axiosApi("lectureRegisters");
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -303,11 +303,10 @@ export default function User() {
                 <TableBody>
                   {info.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
 
-                    const { lectId, categoryName, maxEnrollment,minEnrollment,  lectCost, Title, lectureStatus,
+                    const { lectId, categoryName, maxEnrollment,minEnrollment,  lectCost, title, lectureStatus,
                       startLectureDt} = row;
 
                     const isItemSelected = selected.indexOf(lectId) !== -1;
-
                     return (
                       <TableRow
                         hover
@@ -321,7 +320,7 @@ export default function User() {
                           <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, lectId)} />
                         </TableCell>
                         <TableCell align="center">{categoryName}</TableCell>
-                        <TableCell align="center">{Title}</TableCell>
+                        <TableCell align="center">{title}</TableCell>
                         <TableCell align="left">{minEnrollment} / {maxEnrollment}</TableCell>
                         <TableCell align="center">{lectCost}</TableCell>
                         <TableCell align="center">{lectureStatus}</TableCell>
