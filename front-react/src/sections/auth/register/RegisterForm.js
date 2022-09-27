@@ -57,6 +57,18 @@ export default function RegisterForm({ onAfterSaveAuction}) {
     })
   }
 
+  const alertError = (inputMessage) => {
+    confirmAlert({
+      title : '사용자 등록 오류',
+      message : inputMessage,
+      buttons: [
+        {
+          label: '확인',
+        }
+      ]
+    })
+  }
+
   const onSubmit = async () => {
     http({
       method: 'post',
@@ -68,7 +80,7 @@ export default function RegisterForm({ onAfterSaveAuction}) {
       }
     })
     .then(res => alertPopup('확인을 누르면 로그인 페이지로 이동합니다.'))
-    .catch(err => console.log(err))
+    .catch(err => alertError(err.response.data))
   }
   ;
 

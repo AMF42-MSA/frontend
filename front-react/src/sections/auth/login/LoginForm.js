@@ -58,6 +58,18 @@ export default function LoginForm() {
     })
   }
 
+  const alertError = (inputMessage) => {
+    confirmAlert({
+      title : '로그인 오류',
+      message : inputMessage,
+      buttons: [
+        {
+          label: '확인',
+        }
+      ]
+    })
+  }
+
   const onSubmit = async () => {
     http({
       method: 'post',
@@ -82,7 +94,7 @@ export default function LoginForm() {
       return response.data;
 
     })
-    .catch(err => console.log(err))
+    .catch(err => alertError('로그인 정보를 확인후 재시도 해주세요.'))
 
   };
 

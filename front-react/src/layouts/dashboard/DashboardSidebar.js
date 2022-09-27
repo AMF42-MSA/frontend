@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
-import { Box, Link, Button, Drawer, Typography, Avatar, Stack } from '@mui/material';
+import { Box, Link, Divider, Drawer, Typography, Avatar, Stack } from '@mui/material';
 // mock
 import account from '../../_mock/account';
 // hooks
@@ -14,6 +14,7 @@ import Scrollbar from '../../components/Scrollbar';
 import NavSection from '../../components/NavSection';
 //
 import navConfig from './NavConfig';
+import navConfigAdmin from './NavConfigAdmin';
 
 // ----------------------------------------------------------------------
 
@@ -33,6 +34,12 @@ const AccountStyle = styled('div')(({ theme }) => ({
   borderRadius: Number(theme.shape.borderRadius) * 1.5,
   backgroundColor: theme.palette.grey[500_12],
 }));
+
+const user = JSON.parse(localStorage.getItem("user"));
+let isAdmin = null;
+if (user != null && user.memberType === 'ROLE_ADMIN'){
+  isAdmin = 1;
+}
 
 // ----------------------------------------------------------------------
 
@@ -79,9 +86,14 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           </AccountStyle>
         </Link>
       </Box>
-
       <NavSection navConfig={navConfig} />
 
+      { isAdmin && (
+        <Divider sx={{borderStyle:'dashed'}} />
+      )}
+      { isAdmin && (
+        <NavSection navConfig={navConfigAdmin} />
+      )}
       <Box sx={{ flexGrow: 1 }} />
 
       {/* <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>

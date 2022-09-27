@@ -134,6 +134,18 @@ export default function UserInputBox({ isOpenRegister, onOpenRegister, onCloseRe
   }
 
 
+  const alertError = (inputMessage) => {
+    confirmAlert({
+      title : '관리자 등록 오류',
+      message : inputMessage,
+      buttons: [
+        {
+          label: '확인',
+        }
+      ]
+    })
+  }
+
 
   const auctionRegister = () => {
     console.log(selectedLectinfo);
@@ -145,8 +157,7 @@ export default function UserInputBox({ isOpenRegister, onOpenRegister, onCloseRe
       }
     })
     .then(res => alertPopup('사용자 등록확인'))
-
-    .catch(err => console.log(err))
+    .catch(err => alertError(err.response.data))
   }
 
   const methods = useForm({
@@ -158,7 +169,6 @@ export default function UserInputBox({ isOpenRegister, onOpenRegister, onCloseRe
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
-
 
 
   const onSubmit = async () => {
@@ -176,9 +186,8 @@ export default function UserInputBox({ isOpenRegister, onOpenRegister, onCloseRe
     .then(res =>
       alertPopup('관리자 등록확인'),
       onCloseRegister(),
-
     )
-    .catch(err => alertPopup(err))
+    .catch(err => alertError(err.response.data))
 
   };
 
