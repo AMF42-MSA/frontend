@@ -14,6 +14,7 @@ import Scrollbar from '../../components/Scrollbar';
 import NavSection from '../../components/NavSection';
 //
 import navConfig from './NavConfig';
+import navConfigAdmin from './NavConfigAdmin';
 
 // ----------------------------------------------------------------------
 
@@ -33,6 +34,12 @@ const AccountStyle = styled('div')(({ theme }) => ({
   borderRadius: Number(theme.shape.borderRadius) * 1.5,
   backgroundColor: theme.palette.grey[500_12],
 }));
+
+const user = JSON.parse(localStorage.getItem("user"));
+let isAdmin = null;
+if (user != null && user.memberType === 'ROLE_ADMIN'){
+  isAdmin = 1;
+}
 
 // ----------------------------------------------------------------------
 
@@ -79,8 +86,12 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           </AccountStyle>
         </Link>
       </Box>
-
-      <NavSection navConfig={navConfig} />
+      { isAdmin && (
+        <NavSection navConfig={navConfigAdmin} />
+      )}
+      { !isAdmin && (
+        <NavSection navConfig={navConfig} />
+      )}
 
       <Box sx={{ flexGrow: 1 }} />
 
