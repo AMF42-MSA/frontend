@@ -120,8 +120,8 @@ export default function LectureCategory() {
   const [CATEGORYLIST, setCATEGORYLIST] = useState([]);
 
   const handleRequestInterestSort = (event, property) => {
-    console.log(property);
-    const isAsc = orderBy === property && order === 'asc';
+    // console.log(property);
+    const isAsc = interestOrderBy === property && interestOrder === 'asc';
     setInterestOrder(isAsc ? 'desc' : 'asc');
     setInterestOrderBy(property);
   };
@@ -275,7 +275,7 @@ export default function LectureCategory() {
   };
 
   const requestAddInterestCategory = (selectedCategoryId, selectedCategoryName) => {
-    console.log(selectedCategoryId);
+    // console.log(selectedCategoryId);
     httpInterestCategory({
       method: 'post',
       url: '/registerInterestCategory',
